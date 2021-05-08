@@ -1,0 +1,17 @@
+{
+    "name": "emr-auth",
+    "version": "1.0.0",
+    "description": "",
+    "main": "app.js",
+    "scripts": {
+        "start": "node cerner.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "dependencies": {
+        "simple-oauth2": "^4.2.0",
+        "express": "^4.17.1"
+    },
+    "keywords": [],
+    "author": "<SatioO><vaibhav.satam29991@gmail.com>",
+    "license": "ISC"
+}
