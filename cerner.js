@@ -48,6 +48,18 @@ createApplication(({ app, callbackUrl }) => {
         }
     });
 
+    app.post('/auth/refresh', async (req, res) => {
+        try {
+            const accessTokenJSONString = req.body;
+            let accessToken = client.createToken(accessTokenJSONString);
+            const newToken = await accessToken.refresh();
+
+            res.json(newToken);
+        } catch (err) {
+            res.json(err);
+        }
+    });
+
     app.get('/', (_, res) => {
         res.send('<a href="/auth">Log in with Cerner</a>');
     });
