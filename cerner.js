@@ -21,7 +21,8 @@ createApplication(({ app, callbackUrl }) => {
     const authorizationUri = client.authorizeURL({
         redirect_uri: callbackUrl,
         scope: config.scopes,
-        aud: config.fhir_uri,
+        // aud: config.fhir_uri,
+        // 
         state: config.state,
     });
 
@@ -32,10 +33,11 @@ createApplication(({ app, callbackUrl }) => {
 
     app.get('/callback', async (req, res) => {
         const { code } = req.query;
-
+        console.log(code);
         const options = {
             code,
             redirect_uri: callbackUrl,
+            grant_type: 'authorization_code',
         };
 
         try {
